@@ -33,5 +33,6 @@ public class TaskController {
         List<Task> tasks = taskService.getAllTasks();
         model.addAttribute("tasks",tasks);
         return "tasks"; // this is a html page
+        // view is going to be a thymeleaf template
     }
 }
