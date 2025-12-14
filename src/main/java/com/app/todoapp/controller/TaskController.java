@@ -42,4 +42,17 @@ public class TaskController {
         taskService.createTask(title);
         return "redirect:/tasks"; // redirect page to tasks
     }
+
+    @GetMapping("/{id}/delete")
+    // The @PathVariable annotation in Spring Boot is used to extract dynamic values from a URL path and bind them to method parameters in a controller.
+    public String deleteTask(@PathVariable Long id){
+        taskService.deleteTask(id);
+        return "redirect:/tasks";
+    }
+
+    @GetMapping("/{id}/toggle")
+    public String toggleTask(@PathVariable Long id){
+        taskService.toggleTask(id);
+        return "redirect:/tasks";
+    }
 }
