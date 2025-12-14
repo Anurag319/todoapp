@@ -2,10 +2,10 @@ package com.app.todoapp.controller;
 
 import com.app.todoapp.models.Task;
 import com.app.todoapp.services.TaskService;
+import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +34,12 @@ public class TaskController {
         model.addAttribute("tasks",tasks);
         return "tasks"; // this is a html page
         // view is going to be a thymeleaf template
+    }
+
+    @PostMapping
+    // The @RequestParam annotation in Spring Boot is used to extract query parameters from a URL (e.g., ?name=John) or form data from an HTTP request and bind them to method parameters in a controller.
+    public String createTask(@RequestParam String title){
+        taskService.createTask(title);
+        return "redirect:/tasks"; // redirect page to tasks
     }
 }
